@@ -11,3 +11,6 @@ python-dateutil
 flask
 flask_limiter
 tornado
+
+# custom for Tor-ifying requests
+PySocks

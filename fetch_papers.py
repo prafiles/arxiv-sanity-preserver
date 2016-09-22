@@ -4,6 +4,12 @@ The script is intended to enrich an existing database pickle (by default db.p),
 so this file will be loaded first, and then new results will be added to it.
 """
 
+import socks
+import socket
+
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '10.0.0.200', 9050, True)
+socket.socket = socks.socksocket
+
 import urllib
 import time
 import feedparser

@@ -28,7 +28,7 @@ for pid,j in db.iteritems():
       req = urllib2.urlopen(pdf_url, None, timeout_secs)
       with open(fname, 'wb') as fp:
           shutil.copyfileobj(req, fp)
-      time.sleep(0.1 + random.uniform(0,0.2))
+      #time.sleep(0.1 + random.uniform(0,0.2))
     else:
       print '%s exists, skipping' % (fname, )
     numok+=1

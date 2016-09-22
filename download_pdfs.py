@@ -41,7 +41,7 @@ def download_ppr(dict):
     print 'error downloading: ', pdf_url
     print e
 
-  print '%d/%d of %d downloaded ok.' % (numok, numtot, len(db))
+  print '%d/%d of %d downloaded ok.' % (pid, numtot, len(db))
 
 map = []
 for pid, j in db.iteritems():

@@ -1,3 +1,9 @@
+import socks
+import socket
+
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '10.0.0.200', 9050, True)
+socket.socket = socks.socksocket
+
 import cPickle as pickle
 import urllib2
 import shutil

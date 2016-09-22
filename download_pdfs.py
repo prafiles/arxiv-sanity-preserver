@@ -48,7 +48,7 @@ for pid, j in db.iteritems():
   dict = {"pid": pid, "j": j}
   map.append(dict)
 
-pool = Pool(processes=4)
+pool = Pool(processes=8)
 pool.map(download_ppr,map)
 
 print 'final number of papers downloaded okay: %d/%d' % (numok, len(db))

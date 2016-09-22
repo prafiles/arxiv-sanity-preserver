@@ -1,3 +1,6 @@
+This is a bio-fork for arxiv sanity.
+
+All categories are indexed.
 
 # arxiv sanity preserver
 

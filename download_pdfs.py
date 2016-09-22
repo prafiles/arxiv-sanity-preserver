@@ -16,6 +16,7 @@ have = set(os.listdir('pdf'))  # get list of all pdfs we already have
 
 def download_ppr(dict):
   pid = dict["pid"]
+  print "Downloading : " + pid
   j = dict["j"]
   global numok
   global numtot
@@ -41,7 +42,7 @@ def download_ppr(dict):
     print 'error downloading: ', pdf_url
     print e
 
-  print '%d/%d of %d downloaded ok.' % (pid, numtot, len(db))
+  print '%d/%d of %d downloaded ok.' % (numok, numtot, len(db))
 
 map = []
 for pid, j in db.iteritems():

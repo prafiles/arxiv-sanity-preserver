@@ -380,7 +380,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument('-p', '--prod', dest='prod', action='store_true', help='run in prod?')
   parser.add_argument('-r', '--num_results', dest='num_results', type=int, default=200, help='number of results to return per query')
-  parser.add_argument('--port', dest='port', type=int, default=5000, help='port to serve on')
+  parser.add_argument('--port', dest='port', type=int, default=5001, help='port to serve on')
   args = parser.parse_args()
   print args
 

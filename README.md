@@ -1,3 +1,8 @@
+This is a physics fork of arxiv sanity.
+
+Following categories are indexed:
+accelerator, atomic, classical, computational, data analysis, general, ppular, space
+
 
 # arxiv sanity preserver
 

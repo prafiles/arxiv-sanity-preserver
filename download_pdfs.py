@@ -1,7 +1,7 @@
 import socks
 import socket
 
-socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '10.0.0.200', 9050, True)
+socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, '127.0.0.1', 5566, True)
 socket.socket = socks.socksocket
 
 import cPickle as pickle

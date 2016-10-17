@@ -1,3 +1,12 @@
+## Website hosted
+
+https://phy.arxiv-sanity.prakharshukla.com/ based on physics branch.
+Contains:
+cat:physics.acc-ph, cat:physics.atom-ph, cat:physics.class-ph, cat:physics.comp-ph, cat:physics.data-an, cat:physics.gen-ph, cat:physics.pop-ph and cat:physics.space-ph.
+
+https://bio.arxiv-sanity.prakharshukla.com/ based on biology branch.
+Contains:
+cat:q-bio.BM, cat:q-bio.CB, cat:q-bio.GN, cat:q-bio.MN, cat:q-bio.NC, cat:q-bio.OT, cat:q-bio.PE, cat:q-bio.QM, cat:q-bio.SC and cat:q-bio.TO.
 
 # arxiv sanity preserver
 

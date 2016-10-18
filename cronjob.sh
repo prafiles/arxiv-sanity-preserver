@@ -3,10 +3,10 @@
 source env/bin/activate
 
 python fetch_papers.py
-download_pdf.py
-parse_pdf_to_text.py
-thumb_pdf.py
-analyze.py
-buildsvm.py
+python download_pdf.py
+python parse_pdf_to_text.py
+python thumb_pdf.py
+python analyze.py
+python buildsvm.py
 
 pm2 restart -1

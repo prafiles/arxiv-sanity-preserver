@@ -4,4 +4,4 @@ source env/bin/activate
 
 python buildsvm.py
 
-pm2 restart -1
+pm2 restart 0

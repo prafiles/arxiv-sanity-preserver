@@ -2,7 +2,6 @@
 # them all to a sequence of thumbnail images
 # requires sudo apt-get install imagemagick
 
-import os
 import os.path
 import time
 from subprocess import Popen

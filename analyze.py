@@ -26,7 +26,7 @@ def make_corpus():
     n += 1
     idvv = '%sv%d' % (j['_rawid'], j['_version'])
     fname = os.path.join('txt', idvv) + '.pdf.txt'
-    if os.path.isfile(fname, idvv):  # some pdfs dont translate to txt
+    if os.path.isfile(fname):  # some pdfs dont translate to txt
       yield process_file(fname, idvv)
 
 def process_file(fname,idvv):

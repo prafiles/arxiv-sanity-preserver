@@ -41,9 +41,9 @@ def process_file(fname,idvv):
 
 
   # compute tfidf vectors with scikits
-v = TfidfVectorizer(input='content', 
-        encoding='utf-8', decode_error='replace', strip_accents='unicode', 
-        lowercase=True, analyzer='word', stop_words='english', 
+v = TfidfVectorizer(input='content',
+        encoding='utf-8', decode_error='replace', strip_accents='unicode',
+        lowercase=True, analyzer='word', stop_words='english',
         token_pattern=r'(?u)\b[a-zA-Z_][a-zA-Z0-9_]+\b',
         ngram_range=(1, 2), max_features = 10000,
         norm='l2', use_idf=True, smooth_idf=True, sublinear_tf=False)

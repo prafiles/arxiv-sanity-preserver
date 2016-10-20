@@ -21,6 +21,7 @@ pids = []
 
 def make_corpus():
   n = 0
+  txts = []
   for pid, j in db.iteritems():
     n += 1
     idvv = '%sv%d' % (j['_rawid'], j['_version'])
@@ -29,10 +30,11 @@ def make_corpus():
       txt = open(fname, 'r').read()
       if len(txt) > 100:  # way too short and suspicious
         pids.append(idvv)
+        txts.append(txt)
         print 'read %d/%d (%s) with %d chars' % (n, len(db), idvv, len(txt))
-        yield txt  # todo later: maybe filter or something some of them
       else:
         print 'skipped %d/%d (%s) with %d chars: suspicious!' % (n, len(db), idvv, len(txt))
+  return txts
 
   # compute tfidf vectors with scikits
 v = TfidfVectorizer(input='content',

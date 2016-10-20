@@ -18,28 +18,34 @@ db = pickle.load(open('db.p', 'rb'))
 
 # read all text files for all papers into memory
 pids = []
+n = 0
 
 def make_corpus():
-  n = 0
+  global n
   for pid, j in db.iteritems():
     n += 1
     idvv = '%sv%d' % (j['_rawid'], j['_version'])
     fname = os.path.join('txt', idvv) + '.pdf.txt'
     if os.path.isfile(fname):  # some pdfs dont translate to txt
-      txt = open(fname, 'r').read()
-      if len(txt) > 100:  # way too short and suspicious
-        pids.append(idvv)
-        print 'read %d/%d (%s) with %d chars' % (n, len(db), idvv, len(txt))
-        yield txt  # todo later: maybe filter or something some of them
-      else:
-        print 'skipped %d/%d (%s) with %d chars: suspicious!' % (n, len(db), idvv, len(txt))
+      yield process_file(fname, idvv)
+
+def process_file(fname,idvv):
+  global n
+  txt = open(fname, 'r').read()
+  if len(txt) > 100:  # way too short and suspicious
+    pids.append(idvv)
+    print 'read %d/%d (%s) with %d chars' % (n, len(db), idvv, len(txt))
+    return txt  # todo later: maybe filter or something some of them
+  else:
+    print 'skipped %d/%d (%s) with %d chars: suspicious!' % (n, len(db), idvv, len(txt))
+
 
   # compute tfidf vectors with scikits
-v = TfidfVectorizer(input='content', 
-        encoding='utf-8', decode_error='replace', strip_accents='unicode', 
-        lowercase=True, analyzer='word', stop_words='english', 
+v = TfidfVectorizer(input='content',
+        encoding='utf-8', decode_error='replace', strip_accents='unicode',
+        lowercase=True, analyzer='word', stop_words='english',
         token_pattern=r'(?u)\b[a-zA-Z_][a-zA-Z0-9_]+\b',
-        ngram_range=(1, 2), max_features = 20000, 
+        ngram_range=(1, 2), max_features = 10000,
         norm='l2', use_idf=True, smooth_idf=True, sublinear_tf=False)
 
 X = v.fit_transform(make_corpus()) # TODO: custom function here

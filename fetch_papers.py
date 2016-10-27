@@ -58,7 +58,7 @@ if __name__ == "__main__":
                       default='cat:q-bio.BM+OR+cat:q-bio.CB+OR+cat:q-bio.GN+OR+cat:q-bio.MN+OR+cat:q-bio.NC+OR+cat:q-bio.OT+OR+cat:q-bio.PE+OR+cat:q-bio.QM+OR+cat:q-bio.SC+OR+cat:q-bio.TO',
                       help='query used for arxiv API. See http://arxiv.org/help/api/user-manual#detailed_examples')
   parser.add_argument('--start_index', dest='start_index', type=int, default=0, help='0 = most recent API result')
-  parser.add_argument('--max_index', dest='max_index', type=int, default=100000, help='upper bound on paper index we will fetch')
+  parser.add_argument('--max_index', dest='max_index', type=int, default=10000, help='upper bound on paper index we will fetch')
   parser.add_argument('--results_per_iteration', dest='results_per_iteration', type=int, default=1000, help='passed to arxiv API')
   parser.add_argument('--wait_time', dest='wait_time', type=float, default=10.0, help='lets be gentle to arxiv API (in number of seconds)')
   parser.add_argument('--break_on_no_added', dest='break_on_no_added', type=int, default=1, help='break out early if all returned query papers are already in db? 1=yes, 0=no')

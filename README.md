@@ -8,11 +8,13 @@ https://bio.arxiv-sanity.prakharshukla.com/ based on biology branch.
 Contains:
 cat:q-bio.BM, cat:q-bio.CB, cat:q-bio.GN, cat:q-bio.MN, cat:q-bio.NC, cat:q-bio.OT, cat:q-bio.PE, cat:q-bio.QM, cat:q-bio.SC and cat:q-bio.TO.
 
+Performance benefits over Karpathy's version incloude integrated proxy connections to download multiple files over tor with overall faster throughput. Parallel tasks for some processes to use more cores and decrease overall time taken.
+
+![user interface](https://raw.githubusercontent.com/prafiles/arxiv-sanity-preserver/master/ui.png)
+
 # arxiv sanity preserver
 
 This project is a web interface that attempts to tame the overwhelming flood of papers on Arxiv. It allows researchers to keep track of recent papers, search for papers, sort papers by similarity to any paper, see recent popular papers, to add papers to a personal library, and to get personalized recommendations of (new or old) Arxiv papers. This code is currently running live at [www.arxiv-sanity.com/](http://www.arxiv-sanity.com/), where it's serving 15,000+ Arxiv papers from Machine Learning (cs.[CV|CL|LG|NE]/stat.ML) over the last ~3 years. I am looking for collaborators who wish to try to get this running for other parts of Arxiv as well (e.g. theory? physics?)
-
-![user interface](https://raw.githubusercontent.com/prafiles/arxiv-sanity-preserver/master/ui.png)
 
 ### Code layout
 

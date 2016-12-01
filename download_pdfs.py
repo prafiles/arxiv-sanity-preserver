@@ -1,15 +1,14 @@
 import socks
 import socket
+import os
 
-socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, '10.0.0.200', 5566, True)
+socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, os.environ['IP_ROTATING_PROXY'], 5566, True)
 socket.socket = socks.socksocket
 
 import cPickle as pickle
 import urllib2
 import shutil
-import time
-import os
-import random
+
 from multiprocessing import Pool, TimeoutError
 
 os.system('mkdir -p pdf')  # ?

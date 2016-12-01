@@ -6,15 +6,13 @@ so this file will be loaded first, and then new results will be added to it.
 
 import socks
 import socket
-
-socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, '10.0.0.200', 5566, True)
+import os
+socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, os.environ['IP_ROTATING_PROXY'], 5566, True)
 socket.socket = socks.socksocket
-
 
 import urllib
 import time
 import feedparser
-import os
 import cPickle as pickle
 import argparse
 import random

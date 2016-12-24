@@ -29,6 +29,7 @@ def download_ppr(dict):
   assert len(pdfs) == 1
   pdf_url = pdfs[0] + '.pdf?'
   basename = pdf_url.split('/')[-1]
+  basename = basename[:-1]
   fname = os.path.join('pdf', basename)
 
   # try retrieve the pdf

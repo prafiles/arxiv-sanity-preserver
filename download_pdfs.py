@@ -27,7 +27,7 @@ def download_ppr(dict):
   global numtot
   pdfs = [x['href'] for x in j['links'] if x['type'] == 'application/pdf']
   assert len(pdfs) == 1
-  pdf_url = pdfs[0] + '.pdf'
+  pdf_url = pdfs[0] + '.pdf?'
   basename = pdf_url.split('/')[-1]
   fname = os.path.join('pdf', basename)
 

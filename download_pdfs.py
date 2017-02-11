@@ -1,61 +1,50 @@
 import socks
 import socket
 import os
-
 socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, os.environ['IP_ROTATING_PROXY'], 5566, True)
 socket.socket = socks.socksocket
 
-import cPickle as pickle
-import urllib2
+
+import os
+import time
+import pickle
 import shutil
+import random
+from urllib2 import urlopen
 
-from multiprocessing import Pool, TimeoutError
+from utils import Config
 
-os.system('mkdir -p pdf')  # ?
+timeout_secs = 10 # after this many seconds we give up on a paper
+if not os.path.exists(Config.pdf_dir): os.makedirs(Config.pdf_dir)
+have = set(os.listdir(Config.pdf_dir)) # get list of all pdfs we already have
 
-timeout_secs = 10  # after this many seconds we give up on a paper
 numok = 0
 numtot = 0
-db = pickle.load(open('db.p', 'rb'))
-have = set(os.listdir('pdf'))  # get list of all pdfs we already have
-
-def download_ppr(dict):
-  pid = dict["pid"]
-  print "Downloading : " + pid
-  j = dict["j"]
-  global numok
-  global numtot
+db = pickle.load(open(Config.db_path, 'rb'))
+for pid,j in db.items():
   pdfs = [x['href'] for x in j['links'] if x['type'] == 'application/pdf']
   assert len(pdfs) == 1
-  pdf_url = pdfs[0] + '.pdf?'
+  pdf_url = pdfs[0] + '.pdf'
   basename = pdf_url.split('/')[-1]
-  basename = basename[:-1]
-  fname = os.path.join('pdf', basename)
+  fname = os.path.join(Config.pdf_dir, basename)
 
   # try retrieve the pdf
   numtot += 1
   try:
     if not basename in have:
-      print 'fetching %s into %s' % (pdf_url, fname)
-      req = urllib2.urlopen(pdf_url, None, timeout_secs)
+      print('fetching %s into %s' % (pdf_url, fname))
+      req = urlopen(pdf_url, None, timeout_secs)
       with open(fname, 'wb') as fp:
-        shutil.copyfileobj(req, fp)
-        # time.sleep(0.1 + random.uniform(0,0.2))
+          shutil.copyfileobj(req, fp)
+      time.sleep(0.05 + random.uniform(0,0.1))
     else:
-      print '%s exists, skipping' % (fname,)
-    numok += 1
-  except Exception, e:
-    print 'error downloading: ', pdf_url
-    print e
+      print('%s exists, skipping' % (fname, ))
+    numok+=1
+  except Exception as e:
+    print('error downloading: ', pdf_url)
+    print(e)
+  
+  print('%d/%d of %d downloaded ok.' % (numok, numtot, len(db)))
+  
+print('final number of papers downloaded okay: %d/%d' % (numok, len(db)))
 
-  print '%d/%d of %d downloaded ok.' % (numok, numtot, len(db))
-
-map = []
-for pid, j in db.iteritems():
-  dict = {"pid": pid, "j": j}
-  map.append(dict)
-
-pool = Pool(processes=8)
-pool.map(download_ppr,map)
-
-print 'final number of papers downloaded okay: %d/%d' % (numok, len(db))

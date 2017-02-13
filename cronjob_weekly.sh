@@ -5,8 +5,8 @@ PATH=/usr/local/bin/ices:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
 
 . env/bin/activate
 
-python fetch_papers.py
-python download_pdfs.py
-python parse_pdf_to_text.py
-python thumb_pdf.py
-python analyze.py
+python3 fetch_papers.py
+python3 download_pdfs.py
+python3 parse_pdf_to_text.py
+python3 thumb_pdf.py
+python3 analyze.py

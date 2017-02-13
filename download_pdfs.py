@@ -10,7 +10,7 @@ import time
 import pickle
 import shutil
 import random
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 from utils import Config
 

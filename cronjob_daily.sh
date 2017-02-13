@@ -5,6 +5,6 @@ PATH=/usr/local/bin/ices:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
 
 . env/bin/activate
 
-python buildsvm.py
+python3 buildsvm.py
 
 pm2 restart -1

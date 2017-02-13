@@ -15,7 +15,7 @@ import time
 import pickle
 import random
 import argparse
-import urllib2
+from urllib.request import urlopen
 import feedparser
 
 from utils import Config, safe_pickle_dump
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     print("Results %i - %i" % (i,i+args.results_per_iteration))
     query = 'search_query=%s&sortBy=lastUpdatedDate&start=%i&max_results=%i' % (args.search_query,
                                                          i, args.results_per_iteration)
-    url = urllib2.urlopen(base_url+query)
+    url = urlopen(base_url+query)
     response = url.read()
     parse = feedparser.parse(response)
     num_added = 0

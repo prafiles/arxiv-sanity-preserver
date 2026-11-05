@@ -1,0 +1,15 @@
+# Test-only dependencies for arxiv-sanity-preserver (app requirements.txt is
+# deliberately untouched; these are the subset that installs on Python 3.13).
+#
+#   uv venv /tmp/asp-venv
+#   uv pip install -r tests/requirements-test.txt
+#   /tmp/asp-venv/bin/python -m pytest
+#
+# numpy is imported by serve.py (unused there) so it must be importable.
+pytest>=8
+pytest-cov>=5
+flask>=3
+flask-limiter>=4
+python-dateutil>=2.9
+feedparser>=6
+numpy

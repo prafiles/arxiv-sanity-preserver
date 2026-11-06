@@ -7,6 +7,20 @@ on:
     branches: [main, master]
 
 jobs:
+  build:
+    name: Native build check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # No Dockerfile or packaging in this repo: the build test is a
+      # byte-compile of every shipped script (catches syntax errors in the
+      # daemons the unit tests don't import).
+      - name: Byte-compile all scripts
+        run: python -m compileall -q -x 'tests/|notebooks/' .
+
   pytest:
     runs-on: ubuntu-latest
     steps:
